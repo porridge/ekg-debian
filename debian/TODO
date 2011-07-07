@@ -1,0 +1,8 @@
+What about ioctl on Hurd?
+
+Is current mailbox support OK with the policy?
+
+See contrib/ekgh.
+
+See if it is possible to integrate ekg with "powiedz"
+ 

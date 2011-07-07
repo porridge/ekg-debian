@@ -6,8 +6,9 @@
 LICENCJA
 
     Program jest udostêpniony na zasadach licencji GPL v2, której tre¶æ
-    za³±czono w pliku src/COPYING. Niektóre pliki mog± byæ objête inn±
-    licencj± zgodn± z GPL v2. Fakt ten jest odnotowany na pocz±tku pliku.
+    mo¿na znale¼æ w systemie Debian w pliku /usr/share/common-licenses/GPL-2
+    Niektóre pliki mog± byæ objête inn± licencj± zgodn± z GPL v2. Fakt ten jest
+    odnotowany na pocz±tku pliku.
 
     Wyj±tkiem od licencji GPL v2 jest mo¿liwo¶æ kompilacji, konsolidacji
     i u¿ywania programu z bibliotek± OpenSSL autorstwa Projektu OpenSSL
@@ -231,7 +232,7 @@ WYSY£ANIE SMSÓW
     Wystarczy podaæ ¶cie¿kê do takiego programu w zmiennej
     ,,sms_send_app''. Powinien przyjmowaæ numer telefonu za pierwszy
     parametr i wiadomo¶æ za drugi. Ten ze strony http://ceti.pl/~miki/
-    spe³nia podane wymagania.
+    spe³nia podane wymagania. Jest on dostêpny w pakiecie Debiana "sms-pl".
 
 SYNTEZA MOWY
 
