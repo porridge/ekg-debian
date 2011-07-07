@@ -1,9 +1,10 @@
-ekg (1:1.8~rc0-2) unstable; urgency=low
+ekg (1:1.8~rc1-1) unstable; urgency=low
 
+  * New upstream pre-release (identical to ~rc0).
   * Moved ioctld installation to a separate dh_install command, invoked only
     only when it is not hurd. Closes: #311351
 
- -- Marcin Owsiany <porridge@debian.org>  Mon, 12 May 2008 16:13:41 +0100
+ -- Marcin Owsiany <porridge@debian.org>  Mon, 12 May 2008 16:40:52 +0100
 
 ekg (1:1.8~rc0-1) unstable; urgency=low
 
