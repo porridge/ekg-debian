@@ -1,0 +1,5 @@
+?package(ekg):needs="text" \
+  section="Applications/Network/Communication" \
+  title="EKG" \
+  command="/usr/bin/ekg" \
+  longtitle="EKG - eksperymentalny klient Gadu-Gadu"

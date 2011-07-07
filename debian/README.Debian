@@ -1,0 +1,61 @@
+EKG Debian package
+------------------
+
+As of April 5th 2003 ekg package is built with encryption support, but without
+readline interface. Those two cannot be included together because of license
+issues (OpenSSL license is incompatible with GPL, used by libreadline).
+
+I have chosen to drop ui-readline in favor of encryption support, because it is
+mostly deprecated, not actively developed upstream and said to have a very
+small user base. However, if enough people ask me, I might build another
+version of ekg, which would support readline, but not encryption.
+
+
+Since the documentation frequently refers to the configuration options, here
+they are:
+
+	./configure \
+		--host=$(DEB_HOST_GNU_TYPE) \
+		--build=$(DEB_BUILD_GNU_TYPE) \
+		--prefix=/usr \
+		--sysconfdir=/etc \
+		--mandir=\$${prefix}/share/man \
+		--infodir=\$${prefix}/share/info \
+		--libexecdir=\$${prefix}/lib/ekg \
+		--with-pthread \
+		--enable-ioctld \
+		--disable-ui-readline \
+		--enable-ui-ncurses \
+		--enable-force-ncurses \
+		--without-termcap \
+		--without-bind \
+		--enable-aspell \
+		--with-libgsm \
+		--with-python \
+		--with-zlib \
+		--without-libjpeg \
+		--without-libungif \
+		--with-openssl
+
+ -- Marcin Owsiany <porridge@debian.org>, Sat, 19 Apr 2008 16:46:06 +0100
+
+Server failures
+---------------
+
+ When the main GG server (so called "hub") goes down, the client is unable to
+ retrieve addresses of other servers. This is not as frequent as it used to be
+ in the past. However if it happens, it often helps to manually enter a few
+ addresses. An example (which worked at the time of this writing) is:
+
+ set server 91.197.13.2;91.197.13.26;91.197.13.24;91.197.13.29;91.197.13.12
+
+ The addresses will probably change with time. In that case try the following
+ (unofficial) sites, which monitor the servers:
+
+ http://www.kadu.net/monitor/
+ http://gg.piasta.pl/monitor-serwerow/
+
+ They will probably contain an up-to-date list of server addresses.
+
+ -- Marcin Owsiany <porridge@debian.org>, Sat, 19 Apr 2008 13:55:59 +0100
+

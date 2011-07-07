@@ -5,7 +5,7 @@ CFLAGS = @CFLAGS_LIBGADU@ @CFLAGS@ -I.. -I../lib -I../src
 LIBS = @LIBS_LIBGADU@
 MAKE = @MAKE@
 
-OBJS = ../lib/libgadu.a
+OBJS = -lgadu
 
 all:	register-sync register-async conn-async send remind-async remind-sync httphash
 
