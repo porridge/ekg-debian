@@ -1,0 +1,6 @@
+usr/bin/ekg
+usr/bin/ekglogs
+usr/share/ekg/themes/*
+usr/share/ekg/vars.txt
+usr/share/man/man1/ekg.1
+usr/share/man/pl/man1/ekg.1

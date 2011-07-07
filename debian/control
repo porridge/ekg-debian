@@ -1,0 +1,31 @@
+Source: ekg
+Section: net
+Priority: optional
+Maintainer: Marcin Owsiany <porridge@debian.org>
+Build-Depends: debhelper (>= 4.1.1), libgadu-dev (>= 1:1.8.0), libncurses-dev, libreadline5-dev, zlib1g-dev, python-dev, libgsm1-dev (>= 1.0.10-11.1), libssl-dev, libglib2.0-dev, libaspell-dev
+Standards-Version: 3.7.3
+Homepage: http://ekg.chmurka.net/
+
+Package: ekg
+Section: net
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Recommends: perl, ${shlibs:Recommends}
+Suggests: aspell-pl | aspell-dictionary
+Description: console Gadu Gadu client for UNIX systems
+ EKG ("Eksperymentalny Klient Gadu-Gadu") is an open source
+ Gadu-Gadu client for UNIX systems. Gadu-Gadu is an instant
+ messaging program, very popular in Poland.
+ .
+ EKG features include:
+   - irssi-like ncurses interface with mouse support
+   - sending and receiving files
+   - voice conversations
+   - launching shell commands on certain events
+   - reading input from pipe
+   - Python scripting support
+   - speech synthesis (using an external program)
+   - encryption support
+ .
+ Please note that the program is not internationalized and all messages are in
+ Polish (although the commands are in English).

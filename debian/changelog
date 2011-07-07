@@ -1,0 +1,535 @@
+ekg (1:1.8~rc2-1) unstable; urgency=low
+
+  * Pre-pre-release snapshot
+
+ -- Marcin Owsiany <porridge@debian.org>  Sat, 17 Oct 2009 15:34:35 +0100
+
+ekg (1:1.8~rc1-1) unstable; urgency=low
+
+  * New upstream pre-release (identical to ~rc0).
+  * Moved ioctld installation to a separate dh_install command, invoked only
+    only when it is not hurd. Closes: #311351
+
+ -- Marcin Owsiany <porridge@debian.org>  Mon, 12 May 2008 16:40:52 +0100
+
+ekg (1:1.8~rc0-1) unstable; urgency=low
+
+  * New upstream snapshot. Closes: #446875
+    - fixes shell declaration in two scripts. Closes: #464978
+    - not sure if it happened in this release, because it is very hard to
+      reproduce, but it seems that display_ack=0 now properly ignores the
+      non-delivery warnings. Closes: #305256
+  * Lots of cleanups, to accommodate the fact that libgadu is not in this
+    source package anymore (rules, README.Debian, copyright)
+  * Added a recent libgadu-dev to build-depends (becuse of API dependency)
+  * Minor fixes to description: spelling, capitalization and noted mouse
+    support (disabled by default, BTW)
+  * Added a few missing documents to installation, and removed ui.txt from
+    installation, as it is for developers
+  * Updated menu file (new section, removed hint)
+  * Updated server list and monitoring URLs in README.Debian
+  * Tidied up copyright file
+  * Disabled token image->txt conversion (libungif and libjpeg, removed from
+    build-deps), as the current captchas are impossible to display sensibly.
+    File will be saved to a temporary file.
+  * Added a checkperms-stamp target to debian/rules, useful when packaging
+    straight from SVN
+  * Bumped Standards-Version to 3.7.3
+  * Added a Homepage field to the control file
+  * Fixed clean target in debian/rules to only invoke clean when Makefiles
+    exists, rather than ignoring all errors
+  * Recoded debian/copyright to UTF-8
+  * Fixed some spelling mistakes in changelog
+
+ -- Marcin Owsiany <porridge@debian.org>  Mon, 21 Apr 2008 15:36:17 +0100
+
+ekg (1:1.7~rc2-2) unstable; urgency=high
+
+  * Security upload, for sid and etch
+  * Patched three medium severity security issues in src/events.c:
+    - CVE-2007-1663 A memory leak in handling image messages, which may cause
+      memory exhaustion resulting in a DoS (ekg program crash). Exploitable by
+      a hostile GG user.
+    - CVE-2007-1664 off-by-one in token OCR function, which may cause a null
+      pointer dereference resulting in a DoS (ekg program crash). Exploitable
+      by MiTM (hostile HTTP proxy or TCP stream injection) or a hostile GG
+      server.
+    - CVE-2007-1665 potential memory exhaust in token OCR function, which may
+      cause memory exhaustion resulting in a DoS (ekg program crash).
+      Exploitable by MiTM (hostile HTTP proxy or TCP stream injection) or a
+      hostile GG server.
+
+ -- Marcin Owsiany <porridge@debian.org>  Mon, 26 Mar 2007 18:53:19 +0100
+
+ekg (1:1.7~rc2-1) unstable; urgency=low
+
+  * New upstream release candidate
+  * Added a uscan watch file. Closes: #377342
+
+ -- Marcin Owsiany <porridge@debian.org>  Sun, 27 Aug 2006 13:20:02 +0100
+
+ekg (1:1.6+20060616-1) unstable; urgency=low
+
+  * New upstream snapshot
+  * Contains a fix for GCC 4.1 warning (pointer dereference type punning),
+    thus urgency=medium, because it's going to be in the toolchain for etch
+  * Updated upstream website address
+  * Bumped library symlink targets (API changed)
+
+ -- Marcin Owsiany <porridge@debian.org>  Sat, 17 Jun 2006 15:29:04 +0100
+
+ekg (1:1.6+20060215-1) unstable; urgency=low
+
+  * New upstream snapshot
+    - fix to src/stuff.h merged upstream
+  * Disable OpenSSL support in libgadu ONLY (ekg still uses OpenSSL for SIM)
+    - allows linking other pure-GPL programs against libgadu
+    - GG servers do not support TLS anymore anyway
+  * Removed libssl-dev from libgadu-dev dependencies
+  * Switched ekglogs to glib 2.0:
+    - changed build-depends from libglib1.2-dev to libglib2.0-dev
+    - patched makefile to use pkg-config instead of glib-config
+    - patched parse.c to use fixed max_tokens on g_strsplit()
+  * Changed ekg depends from aspell6-dictionary to aspell-dictionary
+
+ -- Marcin Owsiany <porridge@debian.org>  Thu, 16 Feb 2006 08:10:36 +0100
+
+ekg (1:1.6+20060202-1) unstable; urgency=low
+
+  * New upstream snapshot
+  * Moved to libreadline5-dev, since the old one got removed from archive
+    Closes: #350643
+  * Patched src/stuff.h to fix wrong declaration (build failed on gcc4)
+
+ -- Marcin Owsiany <porridge@debian.org>  Fri,  3 Feb 2006 15:52:49 +0100
+
+ekg (1:1.6+20051103-1) unstable; urgency=low
+
+  * New upstream snapshot
+  * Contains applied patch from Aurelien Jarno to fix FTBFS on GNU/kFreeBSD
+    Closes: #326618
+
+ -- Marcin Owsiany <porridge@debian.org>  Thu,  3 Nov 2005 22:29:11 +0100
+
+ekg (1:1.5+20050808+1.6rc3-1) unstable; urgency=low
+
+  * New upstream snapshot
+  * Added more CAN references to previous changelog entries
+
+ -- Marcin Owsiany <porridge@debian.org>  Tue,  9 Aug 2005 16:11:49 +0200
+
+ekg (1:1.5+20050731+1.6rc3-1) unstable; urgency=low
+
+  * New upstream snapshot
+
+ -- Marcin Owsiany <porridge@debian.org>  Mon,  1 Aug 2005 12:32:31 +0200
+
+ekg (1:1.5+20050718+1.6rc3-1) unstable; urgency=high
+
+  * New upstream release candidate (1.6rc3)
+  * Among other things, contains security fix for integer overflow in libgadu
+    lib/events.c, lib/libgadu.c (CAN-2005-1852) Closes: #318970
+  * Also fixes CAN-2005-2370 and CAN-2005-2448
+
+ -- Marcin Owsiany <porridge@debian.org>  Tue, 19 Jul 2005 12:45:08 +0200
+
+ekg (1:1.5+20050712+1.6rc2-1) unstable; urgency=high
+
+  * New upstream release candidate (1.6rc2)
+  * Among other things, contains security fixes for example user-contributed
+    scripts (CAN-2005-1916 CAN-2005-1850 CAN-2005-1851) Closes: #317027
+  * Updated debian/*links to match new library API number
+  * This build is also against new gcc 4
+  * Bumped standards-version (no changes)
+
+ -- Marcin Owsiany <porridge@debian.org>  Fri, 15 Jul 2005 17:52:51 +0300
+
+ekg (1:1.5+20050523-1) experimental; urgency=low
+
+  * New upstream snapshot
+
+ -- Marcin Owsiany <porridge@debian.org>  Tue, 24 May 2005 17:27:20 +0200
+
+ekg (1:1.5+20050513-1) experimental; urgency=low
+
+  * New upstream snapshot
+     - the changes applied in 1:1.5+20050411-2 are already included
+
+ -- Marcin Owsiany <porridge@debian.org>  Sat, 14 May 2005 00:19:41 +0200
+
+ekg (1:1.5+20050411-3) unstable; urgency=high
+
+  * Applied patches selected from upstream CVS, to fix the following important
+    issues in libgadu (remaining fixes for CAN-2005-2369):
+     - fix a DCC related DoS condition (missing check for 0 return value from
+       read())
+     - fix a mistake of setting errno to 0 instead of passing appropriate
+       value to library user
+     - add input parameter checks whose lack could cause a DoS
+     - fix a few variable signedness errors
+
+ -- Marcin Owsiany <porridge@debian.org>  Tue, 24 May 2005 19:09:33 +0200
+
+ekg (1:1.5+20050411-2) unstable; urgency=high
+
+  * Applied patches selected from upstream CVS, to fix the following important
+    issues in libgadu:
+     - incorrect type punning could cause undefined behavior
+     - assigning syscall return values to unsigned variable makes error
+       conditions undetectable in some situations
+
+ -- Marcin Owsiany <porridge@debian.org>  Sun,  8 May 2005 22:59:33 +0200
+
+ekg (1:1.5+20050411-1) unstable; urgency=high
+
+  * New upstream snapshot (this one includes 1.6rc1 as well as some subsequent
+    CVS changes). This is all very appropriate for sarge.
+     - Includes some medium priority security fixes regarding variable
+       signedness in the library, thus urgency=high. (partly fixes CAN-2005-2369)
+     - Includes the FTBFS fix for amd64/gcc-4.0, by Andreas Jochens, merged
+       upstream. Closes: #300086
+
+ -- Marcin Owsiany <porridge@debian.org>  Tue, 12 Apr 2005 00:05:35 +0200
+
+ekg (1:1.5+20050227-1) unstable; urgency=medium
+
+  * New upstream snapshot. Bugfixes, minor client feature addditions and a
+    fairly important library API addition. Because of this, and the
+    aspell-related changes, it should really make it into sarge, thus
+    urgency=medium
+  * Updated debian/*.links to match new library API number
+  * Rebuilt against aspell 0.60 to allow transition from << 0.60
+  * Changed Suggests: aspell-pl | aspell-dictionary to
+    aspell-pl | aspell6-dictionary accordingly. Closes: #294602
+  * Build-dep on debhelper >= 4.1.1, since earlier ones don't have the -L
+    option.  Closes: #292991
+  * README.Debian:
+     - Removed stale (concerning 1.5-0 and 1.5-1) changelog entries
+     - Added a note on what to do on hub failure (and added a reference to
+     docs/FAQ)
+  * Applied a minor help text enhancement, stolen from CVS
+
+ -- Marcin Owsiany <porridge@debian.org>  Mon, 28 Feb 2005 20:03:14 +0100
+
+ekg (1:1.5+20050212-1) unstable; urgency=medium
+
+  * New upstream snapshot. Contains mostly bugfixes (including one fairly
+    important, concerning thread-safe resolver, thus urgency=medium), and the
+    several new features are not very intrusive, so should be relatively safe.
+  * Modified debian/*.links to match new library API number
+  * Removed all non-Debian-specific patches to the code, since they were
+    present in the snapshot.
+  * Changed ekg Description synopsis to start with a lower-case letter (the
+    other two are supposed to start with one in this case)
+  * Fixed clean target to use "make clean" and explicitly remove some
+    additional files, instead of using "make distclean", which deleted
+    "configure" among other things, which in turn made two subsequent
+    dpkg-buildpackage invocations fail. Closes: #293007
+
+ -- Marcin Owsiany <porridge@debian.org>  Sun, 13 Feb 2005 01:27:32 +0100
+
+ekg (1:1.5-4) unstable; urgency=high
+
+  * Added missing -Wl,-z,defs in m4/acx_pthread.m4 -shared test, fixing FTBFS
+    on mips(el)/sparc Closes: #278334
+  * Adjusted the messages in m4/acx_pthread.m4 a little
+  * Quoted section in menu file
+
+ -- Marcin Owsiany <porridge@debian.org>  Tue, 26 Oct 2004 14:51:44 +0200
+
+ekg (1:1.5-3) unstable; urgency=medium
+
+  * Applied important bugfixes carefully chosen from upstream CVS:
+     - client:
+        + prevent hang on tab completion in some situations,
+        + fix mail check,
+     - library:
+        + image checksum calculation function made usable,
+        + fix hangs on sending large packets
+        + use proper server name for retrieving tokens
+        + fix memory leak on resource shortage
+  * Note in description that Polish is all over the place. Closes: #273950
+  * Added a workaround for the GCC behavior which causes -pthread to be a
+    no-op on some arches when -shared is specified. The proper fix would be to
+    patch GCC to do the Right Thing, but since time to release is running out,
+    and it is not likely that gcc will get fixed, I have modified
+    m4/acx_pthread.m4 to detect such behavior. Closes: #273671
+
+ -- Marcin Owsiany <porridge@debian.org>  Mon, 25 Oct 2004 20:04:01 +0200
+
+ekg (1:1.5-2) unstable; urgency=low
+
+  * Really apply the patches from CVS noted in 1:1.5-1
+
+ -- Marcin Owsiany <porridge@debian.org>  Sun, 25 Jul 2004 14:48:39 +0200
+
+ekg (1:1.5-1) unstable; urgency=low
+
+  * New upstream version, with some patches stolen from CVS, which were added
+    after releasing 1.5. The exact list of modifications is in README.Debian.
+    Closes: #259428
+  * Build with aspell:
+     - debian/README.Debian, debian/control: --enable-aspell added
+     - debian/control: build-depend on libaspell-dev, suggest
+       aspell-pl|aspell-dictionary
+  * Fixed debian/copyright: a note on openssl exception was missing.
+    Closes: #253492
+
+ -- Marcin Owsiany <porridge@debian.org>  Sun, 25 Jul 2004 00:12:14 +0200
+
+ekg (1:1.4-3) unstable; urgency=low
+
+  * Apply some selected patches stolen from current CVS, which both fix
+    annoying errors and are not very instrusive, so we can have a nice
+    and cozy ekg/libgadu in sarge. The exact list of modifications is in
+    README.Debian.
+
+ -- Marcin Owsiany <porridge@debian.org>  Sun, 22 Feb 2004 16:47:59 +0100
+
+ekg (1:1.4-2) unstable; urgency=medium
+
+  * Corrected: libgadu2 -> libgadu3:
+     - directory name in dh_shlibdeps invocation in debian/rules
+     - package name in docs/ULOTKA
+  * Urgency justification: see 1:1.4-1
+
+ -- Marcin Owsiany <porridge@debian.org>  Wed, 31 Dec 2003 01:26:15 +0100
+
+ekg (1:1.4-1) unstable; urgency=medium
+
+  * New upstream version.
+  * Urgency justification:
+     - brings possibly security related fixes (signedness)
+     - supports new protocol which should be supported in sarge, so that the
+       package does not become unsuable when the servers drop the previous
+       protocol (has happened before)
+  * debian/libgadu-dev.links, debian/libgadu2.* debian/control: updated to
+    match new ABI version.
+  * Added a build-dependency on libjpeg62-dev | libjpeg-dev, since libjpeg is
+    now needed for displaying tokens sent by the server. Also added
+    --with-libjpeg to debian/rules and README.Debian
+
+ -- Marcin Owsiany <porridge@debian.org>  Sun, 14 Dec 2003 16:52:32 +0100
+
+ekg (1:1.2-1) unstable; urgency=high
+
+  * New upstream version, minor changes
+    - adds manpages for ekglogs, Closes: #207486
+  * Reason for urgency the same as in 20030826+1.2rc1-1 (fixes a DoS)
+  * Change versioning scheme (snapshot date will be appended to the main
+    version as needed). Use an epoch for this reason.
+  * Install the manpages in debian/rules
+  * Bump standars-version to 3.6.1
+  * Pass -Wl,-z,defs to libgadu linking to disallow undefined symbols at link
+    time as suggested by the policy
+  * Change debhelper compatibility mode to 4, and build-dep to (>= 4)
+  * Add misc:Depends to Depends lines for all packages as encouraged by
+    debhelper(7)
+
+ -- Marcin Owsiany <porridge@debian.org>  Thu, 11 Sep 2003 14:20:51 +0200
+
+ekg (20030826+1.2rc1-2) unstable; urgency=high
+
+  * Build-depend on glib1.2, not 2.0, Closes: #207449
+  * Urgency: the same reason as -1
+
+ -- Marcin Owsiany <porridge@debian.org>  Wed, 27 Aug 2003 11:50:49 +0200
+
+ekg (20030826+1.2rc1-1) unstable; urgency=high
+
+  * New upstream revision (1.2rc1)
+    - Fixes a DoS vulnerability
+  * Include ekg_logs:
+    - build-depend on and suggest glib
+    - include gglogs.vim in examples
+  
+ -- Marcin Owsiany <porridge@debian.org>  Wed, 27 Aug 2003 02:08:00 +0200
+
+ekg (20030810-1) unstable; urgency=low
+
+  * New upstream revision (this is after 1.1 release)
+  * This build is against python 2.3. Hopefully nothing will break.
+
+ -- Marcin Owsiany <porridge@debian.org>  Mon, 11 Aug 2003 19:32:37 +0200
+
+ekg (20030708+1.1rc2-1) unstable; urgency=medium
+
+  * New upstream version 1.1rc2 (the same as snapshots 20030707 and 20030708)
+  * Build --with-pthread Closes: #200199
+  * configure.in: applied a patch from CVS which adds -pthread to libgadu.so
+    linking command
+  * Urgency=medium again because of the reason in 20030702-1
+
+ -- Marcin Owsiany <porridge@debian.org>  Thu, 10 Jul 2003 17:25:01 +0200
+
+ekg (20030702-1) unstable; urgency=medium
+
+  * New upstream snapshot
+    - fixes some important bugs (segfaults, data loss), thus urgency=medium
+  * Added four new contrib files to examples.
+
+ -- Marcin Owsiany <porridge@debian.org>  Thu, 03 Jul 2003 00:47:35 +0200
+
+ekg (20030617-1) unstable; urgency=low
+
+  * New upstream snapshot.
+  * control: 
+    - Add libssl-dev to libgadu-dev Depends:. Thanks to Bartosz Fenski for
+      noticing.
+    - Upgraded Standards-version to 3.5.10 (no changes needed)
+  * rules:
+    - Added -g to CFLAGS (removed from upstream configure.in)
+  * libgadu-dev.files:
+    - Distribute libgadu.pc (pkg-config file) in libgadu-dev. Thanks to
+      Patryk Sciborek for suggesting that.
+  * libgadu-dev.doc-base.api, libgadu-dev.doc-base.protocol: new files
+    - Add libgadu API and gg protocol documentation to Apps/Programming
+      section
+  * TODO: removed 2 entries (doc-base and pkgconfig)
+
+ -- Marcin Owsiany <porridge@debian.org>  Wed, 18 Jun 2003 00:13:00 +0200
+
+ekg (20030608+1.1rc1-1) unstable; urgency=medium
+
+  * New upstream version 1.1rc1 (the same as snapshot 20030608)
+  * Bumped API revision
+  * Adds TLSv1 connections. Thus urgency=medium since it is possible that
+    non-tls connections will be phased out in the future.
+
+ -- Marcin Owsiany <porridge@debian.org>  Mon,  9 Jun 2003 11:15:43 +0200
+
+ekg (20030504-1) unstable; urgency=high
+
+  * New upstream snapshot (we skip 1.0 hoping that sarge will be frozen after
+    1.1 is released)
+  * Urgency high because it includes a security fix (DoS via DCC)
+  * Add optimization flag to CFLAGS_LIBGADU (upstream configure.in changed)
+
+ -- Marcin Owsiany <porridge@debian.org>  Mon,  5 May 2003 13:25:39 +0200
+
+ekg (20030405-1) unstable; urgency=low
+
+  * New upstream snapshot
+  * Removed readline support in favor of encryption support (see README.Debian
+    for a rationale)
+  * Changed libgadu-dev section to libdevel
+
+ -- Marcin Owsiany <porridge@debian.org>  Sun,  5 Mar 2003 22:10:00 +0200
+
+ekg (20030327-1) unstable; urgency=low
+
+  * New upstream snapshot (fixes two readline UI bugs)
+  * Applied a patch which didn't make it into the snapshot
+  * Remove libgadu2.shlibs and add "-V" to dh_shlibs call (I wonder why I
+    didn't do that earlier)
+
+ -- Marcin Owsiany <porridge@debian.org>  Thu, 27 Mar 2003 22:51:53 +0100
+
+ekg (20030326-1) unstable; urgency=low
+
+  * New upstream snapshot (1.0rc1 + fixes)
+  * Update version in libgadu2.shlibs file
+  * Install new API documentation (file names changed upstream)
+  * Bumped API revision in *.links files
+
+ -- Marcin Owsiany <porridge@debian.org>  Wed, 26 Mar 2003 22:08:17 +0100
+
+ekg (20030301-1) unstable; urgency=low
+
+  * New upstream snapshot
+  * Update version in libgadu2.shlibs file
+  * Don't install ekg.pl (removed upstream because ui-automaton was removed)
+  * Updated standards-version to 3.5.8 (pay attention to nostrip,noopt in
+    DEB_BUILD_OPTIONS)
+  * Removed unneeded dh_undocumented call
+  * Updated ekl2 manpages
+
+ -- Marcin Owsiany <porridge@debian.org>  Sun,  2 Mar 2003 16:32:53 +0100
+
+ekg (20030213-1) unstable; urgency=low
+
+  * New upstream snapshot
+  * Buped API number
+  * README.Debian:
+     - moved information on which doc file is in which package moved to ULOTKA
+     - added information on the ./configure flags the package was build with
+  * Follow the docs changes made by upstream
+
+ -- Marcin Owsiany <porridge@debian.org>  Fri, 14 Feb 2003 03:43:21 +0100
+
+ekg (20030129-1) unstable; urgency=low
+
+  * New upstream snapshot
+  * Install docs: userlista.txt, historia.txt, ui-ncurses.txt
+  * Build and install api/ref.*
+  * Install vars.txt
+  * Set --sysconfdir to /etc
+  * Don't install ekgsearch (and its manpages) -- it doesn't work any more,
+    since the protocol changed
+  * Don't install test.py (removed upstream)
+  * Bumped API number
+
+ -- Marcin Owsiany <porridge@debian.org>  Wed, 29 Jan 2003 21:26:54 +0100
+
+ekg (20021218-1) unstable; urgency=low
+
+  * New upstream version
+  * debian/libgadu2.shlibs: bumped version
+  * Enabled libgsm support (voice) -- added to build-depends (>= my NMU)
+
+ -- Marcin Owsiany <porridge@debian.org>  Fri, 20 Dec 2002 00:55:28 +0100
+
+ekg (20021123-1) unstable; urgency=low
+
+  * New upstream snapshot. (Lots of fixes)
+  * Pull the new ekgh script into examples
+  * Use --enable-force-ncurses to make the default UI consistent with upstream
+
+ -- Marcin Owsiany <porridge@debian.org>  Sun, 24 Nov 2002 17:49:05 +0100
+
+ekg (20021029-1) unstable; urgency=low
+
+  * New snapshot. (Lots of fixes, speech synthesis, log compression,
+    conferences, python support, libgadu api version bump and more)
+  * Don't try to check for termcap (--without-termcap).
+  * Linked with zlib and python.
+  * Not likned with libgsm (gotta sort that #inlude <gsm.h> problem out
+    first).
+  * Not linked with openssl (I guess I'm not allowed to do that since ekg is
+    GPL-ed).
+  * Downgreded the dependency on perl to a "Recommends:" (It's only needed for
+    ekgsearch).
+  * Added contrib/ekg.pl to examples (looks like it connects ekg to irssi).
+    Also changed the path to ekg in it.
+  * Added new docs/sim.txt to ekg docs.
+
+ -- Marcin Owsiany <porridge@debian.org>  Fri, 30 Oct 2002 00:03:00 +0100
+
+ekg (20020906-1) unstable; urgency=low
+
+  * New snapshot.
+  * Added info about new interface to Description.
+  * Generate shlibs.local automatically (dh_shlibdeps' -l & -L)
+
+ -- Marcin Owsiany <porridge@debian.org>  Sat,  7 Sep 2002 13:13:49 +0200
+
+ekg (20020901-1) unstable; urgency=low
+
+  * New snapshot, new soname.
+  * Include link.pl and test.py in ekg examples
+  * Added api/functions.txt and python.txt to docs
+  * Rebuilt against new libreadline to workaround ABI change.
+  * Fix the description, thanks Martin. Closes: #155580
+
+ -- Marcin Owsiany <porridge@debian.org>  Mon,  2 Sep 2002 00:14:28 +0200
+
+ekg (20020727-1) unstable; urgency=low
+
+  * Initial Release. Closes: #152528
+  * Moved ioctld to /usr/lib/ekg
+  * A few documents changed to point to files with full paths as installed
+    from a package
+  * Link the examples dynamically with libgadu
+
+ -- Marcin Owsiany <porridge@debian.org>  Sat, 27 Jul 2002 22:40:03 +0200
+
