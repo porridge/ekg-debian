@@ -1,3 +1,10 @@
+ekg (1:1.8~rc0-2) unstable; urgency=low
+
+  * Moved ioctld installation to a separate dh_install command, invoked only
+    only when it is not hurd. Closes: #311351
+
+ -- Marcin Owsiany <porridge@debian.org>  Mon, 12 May 2008 16:13:41 +0100
+
 ekg (1:1.8~rc0-1) unstable; urgency=low
 
   * New upstream snapshot. Closes: #446875

@@ -96,6 +96,8 @@ binary-arch: build install
 	dh_testdir
 	dh_testroot
 	dh_movefiles
+# ioctld is not supported at least on hurd-i386
+	case $(DEB_BUILD_GNU_TYPE) in i[3456]86-gnu) ;; *) dh_install --sourcedir=debian/tmp usr/lib/ekg/ioctld ;; esac
 	install -m 0755 -o root -g root contrib/ekl2.sh debian/ekg/usr/bin/ekl2
 	dh_installdocs
 	dh_installexamples -pekg contrib/ekl2.pl contrib/link.pl contrib/ekgh \
