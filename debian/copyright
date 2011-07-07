@@ -1,0 +1,25 @@
+This package was debianized by Marcin Owsiany <porridge@debian.org> on
+Sun, 14 Jul 2002 12:13:03 +0200.
+
+It was downloaded from http://ekg.chmurka.net/download.php
+
+Copyright and author information:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+(C) Copyright 2001-2007 Authors:
+  Wojtek Kaniewski <wojtekka@irc.pl>,
+  Robert J. Woźny <speedy@ziew.org>,
+  Adam Osuchowski <adwol@polsl.gliwice.pl>
+  ... and others (see AUTORZY section in docs/README)
+
+License information:
+~~~~~~~~~~~~~~~~~~~~
+
+  The original license terms are in Polish, in docs/README file.
+  
+  The client program is released under the terms of the GPL v2 license, with the
+  additional exception that it is allowed to compile, link and use the program
+  with OpenSSL library by (The OpenSSL Project), available from
+  http://www.openssl.org/
+
+See /usr/share/common-licenses/GPL-2 for the full license.
+

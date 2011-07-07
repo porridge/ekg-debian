@@ -1,0 +1,2 @@
+version=3
+opts=dversionmangle=s/^.*[+]//;s/^([\d.]+)$/$1rel/,uversionmangle=s/^([\d.]+)$/$1rel/ http://ekg.chmurka.net/download.php ekg-(\d[^[:space:]]*\.[^[:space:]]*)\.(?:tar\.gz|tgz|tar\.bz2|tbz|tbz2)

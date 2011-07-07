@@ -295,7 +295,7 @@ void process_line()
 		char *l;
 		
 		chr='<';
-		a=g_strsplit(linebuf,",",5);
+		a=g_strsplit(linebuf,",",6);
 		l=a[5];
 		if(a[5][0]=='"')
 		{
@@ -321,7 +321,7 @@ void process_line()
 		char *l;
 		
 		chr='>';
-		a=g_strsplit(linebuf,",",4);
+		a=g_strsplit(linebuf,",",5);
 		l=a[4];
 		if(a[4][0]=='"')
 		{
@@ -345,7 +345,7 @@ void process_line()
 		char *l;
 
 		chr='|';
-		a=g_strsplit(linebuf,",",6);
+		a=g_strsplit(linebuf,",",7);
 		l=a[6];
 		if(l && l[0]=='"')
 		{
