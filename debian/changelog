@@ -1,3 +1,11 @@
+ekg (1:1.8~rc2-1) unstable; urgency=low
+
+  * [7ba5778] Make the Makefiles support separate build directories.
+  * [57c0ea1] Modernized the build and created new ekg-gtk package.
+  * Removed the obsolete libreadline5-dev dependency (Closes: Bug#553749)
+
+ -- Marcin Owsiany <porridge@debian.org>  Sun, 10 Jul 2011 11:43:55 +0100
+
 ekg (1:1.8~rc1-1) unstable; urgency=low
 
   * New upstream pre-release (identical to ~rc0).
