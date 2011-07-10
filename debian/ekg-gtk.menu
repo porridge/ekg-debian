@@ -1,5 +1,5 @@
-?package(ekg):needs="text" \
+?package(ekg-gtk):needs="x11" \
   section="Applications/Network/Communication" \
-  title="EKG - text UI" \
-  command="/usr/bin/ekg-ncurses" \
+  title="EKG - GUI mode" \
+  command="/usr/bin/ekg-gtk -f gtk" \
   longtitle="EKG - eksperymentalny klient Gadu-Gadu"

@@ -35,7 +35,8 @@ they are:
 		--with-zlib \
 		--without-libjpeg \
 		--without-libungif \
-		--with-openssl
+		--with-openssl \
+		--(enable,disable)-ui-gtk
 
  -- Marcin Owsiany <porridge@debian.org>, Sat, 19 Apr 2008 16:46:06 +0100
 

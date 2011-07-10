@@ -1,0 +1,6 @@
+#!/bin/sh
+set -e
+if [ "$1" = "configure" ]; then
+	update-alternatives --install /usr/bin/ekg ekg /usr/bin/ekg-gtk 200
+fi
+#DEBHELPER#

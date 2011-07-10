@@ -1,36 +1,9 @@
 #!/usr/bin/make -f
-# Sample debian/rules that uses debhelper.
-# GNU copyright 1997 to 1999 by Joey Hess.
-# Adapted for ekg package by Marcin Owsiany.
-# GNU copyright 2002, 2003
+# ekg package rules file
+# Copyright 2002-2011 Marcin Owsiany <porridge@debian.org>
 
-#export DH_VERBOSE=1
-
-# Help cross-compiling
-DEB_HOST_GNU_TYPE   ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
-DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
-
-CFLAGS += -g
-ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
-	CFLAGS += -O0
-else
-	CFLAGS += -O2
-endif
-export CFLAGS
-
-# dh_strip will take care of nostrip
-
-checkperms-stamp:
-	for f in depcomp missing config.guess config.sub compile install-sh configure ; do \
-	if [ -e $$f -a ! -x $$f ] ; then chmod +x $$f ; fi ; done
-	touch checkperms-stamp
-
-config.status: configure checkperms-stamp
-	dh_testdir
 # Remember to update README.Debian as well...
-	./configure \
-		--host=$(DEB_HOST_GNU_TYPE) \
-		--build=$(DEB_BUILD_GNU_TYPE) \
+confflags = \
 		--prefix=/usr \
 		--sysconfdir=/etc \
 		--mandir=\$${prefix}/share/man \
@@ -50,84 +23,77 @@ config.status: configure checkperms-stamp
 		--without-libjpeg \
 		--without-libungif \
 		--with-openssl
+# Reasons for disabling some features are in README.Debian
 # Remember to update README.Debian as well...
 
+# As recommended by "current Debian best practice" prescribed by autotools-dev,
+# we set configure flags appropriately to help cross-compiling:
+# These are set automatically by dpkg-buildpackage, but we cannot depend on
+# them being available, because caller might not be using dpkg-buildpackage
+DEB_HOST_GNU_TYPE   ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
+DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 
-build: build-stamp
-build-stamp:  config.status
-	dh_testdir
-	$(MAKE)
+ifeq ($(DEB_BUILD_GNU_TYPE), $(DEB_HOST_GNU_TYPE))
+  confflags += --build $(DEB_HOST_GNU_TYPE)
+else
+  confflags += --build $(DEB_BUILD_GNU_TYPE) --host $(DEB_HOST_GNU_TYPE)
+endif
+
+-include /usr/share/topgit/tg2quilt.mk
+/usr/share/topgit/tg2quilt.mk:
+
+%:
+	dh $@ --with autoreconf --parallel
+
+
+override_dh_autoreconf:
+	dh_autoreconf autoreconf -- -f -i -I m4
+
+override_dh_auto_configure:
+	dh_auto_configure -- $(confflags) --disable-ui-gtk
+	mkdir build-gtk && cd build-gtk && ../configure $(confflags) --enable-ui-gtk
+# Reasons for disabling some features are in README.Debian
+# Remember to update README.Debian as well...
+
+override_dh_auto_build:
+	dh_auto_build -- compat ekg
+	cd build-gtk && $(MAKE) compat ekg
 	$(MAKE) -C contrib/ekg_logs
-	touch build-stamp
 
-clean:
-	dh_testdir
-	dh_testroot
-	rm -f build-stamp checkperms-stamp
-	if [ -e Makefile ] ; then $(MAKE) clean ; fi
-# make distclean is too agressive (removes configure), and make clean -- to
-# lazy.  Therefore clean the following files explicitly:
-	rm -f examples/Makefile
-	rm -f src/Makefile
-	rm -f config.log
-	rm -f config.status
-	rm -f Makefile
-	rm -f config.h
+override_dh_auto_clean:
+	dh_auto_clean
+	rm -rf build-gtk
 	if [ -e contrib/ekg_logs/Makefile ] ; then $(MAKE) -C contrib/ekg_logs clean ; fi
-	-test -r /usr/share/misc/config.sub && \
-	  cp -f /usr/share/misc/config.sub config.sub
-	-test -r /usr/share/misc/config.guess && \
-	  cp -f /usr/share/misc/config.guess config.guess
-	dh_clean
 
-install: build
-	dh_testdir
-	dh_testroot
-	dh_clean -k
-	dh_installdirs
-	$(MAKE) install prefix=$(CURDIR)/debian/tmp/usr
-	install -m 0755 -o root -g root contrib/ekg_logs/parse debian/tmp/usr/bin/ekglogs
-
-
-binary-indep: build install
-# We have nothing to do.
-
-binary-arch: build install
-	dh_testdir
-	dh_testroot
-	dh_movefiles
-# ioctld is not supported at least on hurd-i386
-	case $(DEB_BUILD_GNU_TYPE) in i[3456]86-gnu) ;; *) dh_install --sourcedir=debian/tmp usr/lib/ekg/ioctld ;; esac
+override_dh_auto_install:
+# ncurses ekg
+	dh_auto_install --destdir=$(CURDIR)/debian/ekg -- install-ekg
+	mv debian/ekg/usr/bin/ekg debian/ekg/usr/bin/ekg-ncurses
+# gtk ekg
+	install -d -m 0755 -o root -g root debian/ekg-gtk/usr/bin
+	install -m 0755 -o root -g root build-gtk/src/ekg debian/ekg-gtk/usr/bin/ekg-gtk
+# programs which are not installed by default by upstream
 	install -m 0755 -o root -g root contrib/ekl2.sh debian/ekg/usr/bin/ekl2
-	dh_installdocs
-	dh_installexamples -pekg contrib/ekl2.pl contrib/link.pl contrib/ekgh \
-	                         contrib/ekglog.pl contrib/ekg_logs/gglogi.vim \
-				 contrib/scripts/ekgbot-pre1.py \
-				 contrib/scripts/linki.py
-	dh_installexamples
-	dh_installmenu
+	install -m 0755 -o root -g root contrib/ekg_logs/parse debian/ekg/usr/bin/ekglogs
+# ioctld is not supported at least on hurd-i386
+	case $(DEB_BUILD_GNU_TYPE) in i[3456]86-gnu) rm -f debian/ekg/usr/lib/ekg/ioctld ;; *) ;; esac
+
+override_dh_installman:
 	dh_installman
 	install -p -m644 docs/ekl2.man.en debian/ekg/usr/share/man/man1/ekl2.1
 	install -p -m644 docs/ekl2.man.pl debian/ekg/usr/share/man/pl/man1/ekl2.1
 	install -p -m644 docs/ekglogs.man.en debian/ekg/usr/share/man/man1/ekglogs.1
 	install -p -m644 docs/ekglogs.man.pl debian/ekg/usr/share/man/pl/man1/ekglogs.1
-	dh_installinfo
-	dh_installchangelogs ChangeLog
+
+override_dh_link:
+	rm -r debian/ekg-gtk/usr/share/doc/ekg-gtk
 	dh_link
-	dh_strip
-	dh_compress
-	dh_fixperms
-	dh_makeshlibs -V
-	dh_installdeb
-	dh_shlibdeps -X debian/ekg/usr/bin/ekglogs
-# A hack to downgrade ekglogs dependancies to recommedations
+
+# A hack to downgrade ekglogs dependencies to recommedations, for ekg.
+# ekg-gtk already transitively depends on GLib, so no need to tweak that one.
+override_dh_shlibdeps:
+	dh_shlibdeps -pekg -X debian/ekg/usr/bin/ekglogs
+	dh_shlibdeps --remaining-packages
 	dpkg-shlibdeps -Tdebian/ekg.substvars.tmp -dRecommends debian/ekg/usr/bin/ekglogs
 	cat debian/ekg.substvars.tmp >> debian/ekg.substvars
 	rm -f debian/ekg.substvars.tmp
-# Endhack :-)
-	dh_gencontrol
-	dh_md5sums
-	dh_builddeb
-
-binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install 
