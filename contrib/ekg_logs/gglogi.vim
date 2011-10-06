@@ -1,4 +1,4 @@
-" syntax do vim'a do przegl±dania logów moj± przegl±dark± logów :-)
+" syntax do vim'a do przegl±dania logów przy pomocy ekglogs
 " Autor: Robert Goliasz <rgoliasz@poczta.onet.pl>
 
 syntax on
