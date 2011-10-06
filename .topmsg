@@ -1,0 +1,6 @@
+From: Marcin Owsiany <marcin@owsiany.pl>
+Subject: [PATCH] debian/doc-pointers
+
+Changed documentation references to better suit Debian installation.
+
+Signed-off-by: Marcin Owsiany <marcin@owsiany.pl>
