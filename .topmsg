@@ -1,0 +1,6 @@
+From: Marcin Owsiany <marcin@owsiany.pl>
+Subject: [PATCH] debian/examples-makefile
+
+Use the dynamic library in examples' Makefile.
+
+Signed-off-by: Marcin Owsiany <marcin@owsiany.pl>
