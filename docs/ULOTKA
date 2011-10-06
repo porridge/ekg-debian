@@ -59,18 +59,12 @@ gdb.txt		szybki kurs obs³ugi gdb.
 python.txt	krótki opis mo¿liwo¶ci obs³ugi skryptów w pythonie przez ekg.
 
 devel-hints.txt	wskazówki dla tych, którzy chc± co¶ poprawiæ w ekg/libgadu.
-		Plik ten jest dostêpny tylko w pakiecie ¼ród³owym ekg, nie ma
-		go w pakiecie binarnym.
 
 przenosny-kod.txt
 		kilka wskazówek na temat pisania kodu przeno¶nego miêdzy
-		ró¿nymi uniksami. Plik ten jest dostêpny tylko w pakiecie
-		¼ród³owym ekg, nie ma go w pakiecie binarnym.
-
+		ró¿nymi uniksami.
 
 ui.txt		wskazówki dla developerów chc±cych dodaæ nowe ui.
-		Plik ten jest dostêpny tylko w pakiecie ¼ród³owym ekg, nie ma
-		go w pakiecie binarnym.
 
 
 [1] autor Jacek Pop³awski, <slrnaor068.54v.jp@darkwood.somewhere>
