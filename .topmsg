@@ -1,0 +1,6 @@
+From: Marcin Owsiany <marcin@owsiany.pl>
+Subject: [PATCH] feature/ekglogs-glib2
+
+Ported ekglogs to glib v2.
+
+Signed-off-by: Marcin Owsiany <marcin@owsiany.pl>
