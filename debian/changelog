@@ -1,3 +1,12 @@
+ekg (1:1.8~rc2+r2850-2) unstable; urgency=low
+
+  * [f029da7] Fixed version mangling in the watch file.
+  * [5fb31dd] Add missing includes and decls. Closes: #641961
+  * Migrated the automatic debian patch into separate topgit patches.
+    Closes: #643106
+
+ -- Marcin Owsiany <porridge@debian.org>  Thu, 06 Oct 2011 20:51:07 +0100
+
 ekg (1:1.8~rc2-1) unstable; urgency=low
 
   * [7ba5778] Make the Makefiles support separate build directories.
