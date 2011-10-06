@@ -1,0 +1,6 @@
+From: Marcin Owsiany <marcin@owsiany.pl>
+Subject: [PATCH] feature/alternative-build-dirs
+
+Added support for alternative build directories.
+
+Signed-off-by: Marcin Owsiany <marcin@owsiany.pl>
