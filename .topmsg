@@ -1,0 +1,4 @@
+From: Marcin Owsiany <marcin@owsiany.pl>
+Subject: Use the dynamic library in examples' Makefile.
+
+Signed-off-by: Marcin Owsiany <marcin@owsiany.pl>
