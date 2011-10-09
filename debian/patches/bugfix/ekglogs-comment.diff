@@ -1,0 +1,24 @@
+From: Marcin Owsiany <marcin@owsiany.pl>
+Subject: [PATCH] bugfix/ekglogs-comment
+
+Changed the comment in the ekglogs vim syntax file to something more
+appropriate.
+
+Signed-off-by: Marcin Owsiany <marcin@owsiany.pl>
+
+---
+ contrib/ekg_logs/gglogi.vim |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/contrib/ekg_logs/gglogi.vim b/contrib/ekg_logs/gglogi.vim
+index 591bef4..556735c 100644
+--- a/contrib/ekg_logs/gglogi.vim
++++ b/contrib/ekg_logs/gglogi.vim
+@@ -1,4 +1,4 @@
+-" syntax do vim'a do przegl±dania logów moj± przegl±dark± logów :-)
++" syntax do vim'a do przegl±dania logów przy pomocy ekglogs
+ " Autor: Robert Goliasz <rgoliasz@poczta.onet.pl>
+ 
+ syntax on
+-- 
+tg: (5fb31dd..) bugfix/ekglogs-comment (depends on: ekg-1.8rc2)

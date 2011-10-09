@@ -1,0 +1,5 @@
+bugfix/ekglogs-comment.diff -p1
+debian/doc-pointers.diff -p1
+debian/examples-makefile.diff -p1
+feature/alternative-build-dirs.diff -p1
+feature/ekglogs-glib2.diff -p1

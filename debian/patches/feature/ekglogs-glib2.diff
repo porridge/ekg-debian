@@ -1,0 +1,59 @@
+From: Marcin Owsiany <marcin@owsiany.pl>
+Subject: [PATCH] feature/ekglogs-glib2
+
+Ported ekglogs to glib v2.
+
+Signed-off-by: Marcin Owsiany <marcin@owsiany.pl>
+
+---
+ contrib/ekg_logs/Makefile |    3 +--
+ contrib/ekg_logs/parse.c  |    6 +++---
+ 2 files changed, 4 insertions(+), 5 deletions(-)
+
+diff --git a/contrib/ekg_logs/Makefile b/contrib/ekg_logs/Makefile
+index 2fdc618..9f6986e 100644
+--- a/contrib/ekg_logs/Makefile
++++ b/contrib/ekg_logs/Makefile
+@@ -1,8 +1,7 @@
+ all: parse
+ 
+ parse: parse.c
+-	gcc -O2 -o parse parse.c  `glib-config --cflags --libs` # -ggdb
+-	strip parse
++	gcc $(CFLAGS) -o parse parse.c  `pkg-config --cflags --libs glib-2.0` # -ggdb
+ 
+ clean:
+ 	rm -f parse
+diff --git a/contrib/ekg_logs/parse.c b/contrib/ekg_logs/parse.c
+index f8fc1a8..4d3722b 100644
+--- a/contrib/ekg_logs/parse.c
++++ b/contrib/ekg_logs/parse.c
+@@ -295,7 +295,7 @@ void process_line()
+ 		char *l;
+ 		
+ 		chr='<';
+-		a=g_strsplit(linebuf,",",5);
++		a=g_strsplit(linebuf,",",6);
+ 		l=a[5];
+ 		if(a[5][0]=='"')
+ 		{
+@@ -321,7 +321,7 @@ void process_line()
+ 		char *l;
+ 		
+ 		chr='>';
+-		a=g_strsplit(linebuf,",",4);
++		a=g_strsplit(linebuf,",",5);
+ 		l=a[4];
+ 		if(a[4][0]=='"')
+ 		{
+@@ -345,7 +345,7 @@ void process_line()
+ 		char *l;
+ 
+ 		chr='|';
+-		a=g_strsplit(linebuf,",",6);
++		a=g_strsplit(linebuf,",",7);
+ 		l=a[6];
+ 		if(l && l[0]=='"')
+ 		{
+-- 
+tg: (5fb31dd..) feature/ekglogs-glib2 (depends on: ekg-1.8rc2)

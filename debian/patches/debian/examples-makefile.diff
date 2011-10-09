@@ -1,0 +1,26 @@
+From: Marcin Owsiany <marcin@owsiany.pl>
+Subject: [PATCH] debian/examples-makefile
+
+Use the dynamic library in examples' Makefile.
+
+Signed-off-by: Marcin Owsiany <marcin@owsiany.pl>
+
+---
+ examples/Makefile.in |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/examples/Makefile.in b/examples/Makefile.in
+index 93f5154..4afa241 100644
+--- a/examples/Makefile.in
++++ b/examples/Makefile.in
+@@ -5,7 +5,7 @@ CFLAGS = @CFLAGS_LIBGADU@ @CFLAGS@ -I.. -I../lib -I../src
+ LIBS = @LIBS_LIBGADU@
+ MAKE = @MAKE@
+ 
+-OBJS = ../lib/libgadu.a
++OBJS = -lgadu
+ 
+ all:	register-sync register-async conn-async send remind-async remind-sync httphash
+ 
+-- 
+tg: (5fb31dd..) debian/examples-makefile (depends on: ekg-1.8rc2)

@@ -1,0 +1,104 @@
+From: Marcin Owsiany <marcin@owsiany.pl>
+Subject: [PATCH] debian/doc-pointers
+
+Changed documentation references to better suit Debian installation.
+
+Signed-off-by: Marcin Owsiany <marcin@owsiany.pl>
+
+---
+ docs/FAQ         |    1 +
+ docs/README      |    7 ++++---
+ docs/ULOTKA      |    8 +++++++-
+ src/themes.c     |    2 +-
+ themes/old.theme |    2 +-
+ 5 files changed, 14 insertions(+), 6 deletions(-)
+
+diff --git a/docs/FAQ b/docs/FAQ
+index 35ce76a..434fd7f 100644
+--- a/docs/FAQ
++++ b/docs/FAQ
+@@ -49,6 +49,7 @@ A: Jasne. Tworzymy nowe okno (,,window new''), prze
+ Q: Nie chce siê ³±czyæ, a windziany klient dzia³a! Co jest?
+ A: Najwyra¼niej pad³ jeden z serwerów. Wpisz ,,set server 217.17.41.x'',
+    gdzie x to warto¶æ od 82 do 89 i spróbuj po³±czyæ siê jeszcze raz.
++   Zobacz te¿ informacjê w README.Debian.
+ 
+ Q: Jak usun±æ zmienn±?
+ A: ,,set -zmienna''.
+diff --git a/docs/README b/docs/README
+index 70393e3..47eaf64 100644
+--- a/docs/README
++++ b/docs/README
+@@ -6,8 +6,9 @@
+ LICENCJA
+ 
+     Program jest udostêpniony na zasadach licencji GPL v2, której tre¶æ
+-    za³±czono w pliku src/COPYING. Niektóre pliki mog± byæ objête inn±
+-    licencj± zgodn± z GPL v2. Fakt ten jest odnotowany na pocz±tku pliku.
++    mo¿na znale¼æ w systemie Debian w pliku /usr/share/common-licenses/GPL-2
++    Niektóre pliki mog± byæ objête inn± licencj± zgodn± z GPL v2. Fakt ten jest
++    odnotowany na pocz±tku pliku.
+ 
+     Wyj±tkiem od licencji GPL v2 jest mo¿liwo¶æ kompilacji, konsolidacji
+     i u¿ywania programu z bibliotek± OpenSSL autorstwa Projektu OpenSSL
+@@ -231,7 +232,7 @@ WYSY
+     Wystarczy podaæ ¶cie¿kê do takiego programu w zmiennej
+     ,,sms_send_app''. Powinien przyjmowaæ numer telefonu za pierwszy
+     parametr i wiadomo¶æ za drugi. Ten ze strony http://ceti.pl/~miki/
+-    spe³nia podane wymagania.
++    spe³nia podane wymagania. Jest on dostêpny w pakiecie Debiana "sms-pl".
+ 
+ SYNTEZA MOWY
+ 
+diff --git a/docs/ULOTKA b/docs/ULOTKA
+index d97769c..cbffbcf 100644
+--- a/docs/ULOTKA
++++ b/docs/ULOTKA
+@@ -59,12 +59,18 @@ gdb.txt		szybki kurs obs
+ python.txt	krótki opis mo¿liwo¶ci obs³ugi skryptów w pythonie przez ekg.
+ 
+ devel-hints.txt	wskazówki dla tych, którzy chc± co¶ poprawiæ w ekg/libgadu.
++		Plik ten jest dostêpny tylko w pakiecie ¼ród³owym ekg, nie ma
++		go w pakiecie binarnym.
+ 
+ przenosny-kod.txt
+ 		kilka wskazówek na temat pisania kodu przeno¶nego miêdzy
+-		ró¿nymi uniksami.
++		ró¿nymi uniksami. Plik ten jest dostêpny tylko w pakiecie
++		¼ród³owym ekg, nie ma go w pakiecie binarnym.
++
+ 
+ ui.txt		wskazówki dla developerów chc±cych dodaæ nowe ui.
++		Plik ten jest dostêpny tylko w pakiecie ¼ród³owym ekg, nie ma
++		go w pakiecie binarnym.
+ 
+ 
+ [1] autor Jacek Pop³awski, <slrnaor068.54v.jp@darkwood.somewhere>
+diff --git a/src/themes.c b/src/themes.c
+index d9cd9b3..f97ae05 100644
+--- a/src/themes.c
++++ b/src/themes.c
+@@ -932,7 +932,7 @@ void theme_init()
+ 	format_add("help_more", "%) %|%1\n", 1);
+ 	format_add("help_alias", "%) %T%1%n jest aliasem i nie posiada opisu\n", 1);
+ 	format_add("help_footer", "\n%> %|Wiêcej szczegó³ów na temat komend zwróci %Thelp <komenda>%n. Opis zmiennych mo¿na otrzymaæ wpisuj±c %Thelp set <zmienna>%n. Poprzedzenie komendy znakiem %T^%n spowoduje ukrycie jej wyniku. Zamiast parametru <numer/alias> mo¿na u¿yæ znaku %T$%n oznaczaj±cego aktualnego rozmówcê.\n\n", 1);
+-	format_add("help_quick", "%> %|Przed u¿yciem przeczytaj ulotkê. Plik %Tdocs/ULOTKA%n zawiera krótki przewodnik po za³±czonej dokumentacji. Je¶li go nie masz, mo¿esz ¶ci±gn±æ pakiet ze strony %Thttp://ekg.chmurka.net/%n\n", 1);
++	format_add("help_quick", "%> %|Przed u¿yciem przeczytaj ulotkê. Plik %T/usr/share/doc/ekg/ULOTKA%n zawiera krótki przewodnik po za³±czonej dokumentacji. Je¶li go nie masz, mo¿esz ¶ci±gn±æ pakiet ze strony %Thttp://ekg.chmurka.net/%n\n", 1);
+ 	format_add("help_set_file_not_found", "%! Nie znaleziono opisu zmiennych (nieprawid³owa instalacja)\n", 1);
+ 	format_add("help_set_var_not_found", "%! Nie znaleziono opisu zmiennej %T%1%n\n", 1);
+ 	format_add("help_set_header", "%> %T%1%n (%2, domy¶lna warto¶æ: %3)\n%>\n", 1);
+diff --git a/themes/old.theme b/themes/old.theme
+index 0278137..352b01e 100644
+--- a/themes/old.theme
++++ b/themes/old.theme
+@@ -49,7 +49,7 @@ help %> %1%2 - %3%4\n
+ help_more %) %1\n
+ help_alias %) %T%1%n jest aliasem i nie posiada opisu\n
+ help_footer  \n%> Gwiazdka (%T*%n) oznacza, ¿e mo¿na uzyskaæ wiêcej szczegó³ów\n\n
+-help_quick %> Przed u¿yciem przeczytaj ulotkê. Plik %Tdocs/ULOTKA%n zawiera krótki\n%> przewodnik po za³±czonej dokumentacji. Je¶li go nie masz, mo¿esz\n%> ¶ci±gn±æ pakiet ze strony %Thttp://ekg.chmurka.net/%n\n
++help_quick %> Przed u¿yciem przeczytaj ulotkê. Plik %T/usr/share/doc/ekg/ULOTKA%n\n%> zawiera krótki przewodnik po za³±czonej dokumentacji. Je¶li go\n%> nie masz, mo¿esz ¶ci±gn±æ pakiet ze strony %Thttp://ekg.chmurka.net/%n\n
+ ignored_added %> Dodano %T%1%n do listy ignorowanych\n
+ ignored_deleted %> Usuniêto %1 z listy ignorowanych\n
+ ignored_list %> %1\n
+-- 
+tg: (5fb31dd..) debian/doc-pointers (depends on: ekg-1.8rc2)
