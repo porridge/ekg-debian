@@ -9,7 +9,6 @@ Vcs-Git: git://github.com/porridge/ekg.git
 Vcs-Browser: https://github.com/porridge/ekg
 
 Package: ekg
-Section: net
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Recommends: perl, ${shlibs:Recommends}
@@ -37,7 +36,6 @@ Description: console Gadu Gadu client for UNIX systems - ncurses UI
  package as well.
 
 Package: ekg-gtk
-Section: net
 Architecture: any
 Depends: ekg (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
 Enhances: ekg
