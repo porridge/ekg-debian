@@ -9,7 +9,6 @@ Vcs-Git: git://github.com/porridge/ekg.git
 Vcs-Browser: https://github.com/porridge/ekg
 
 Package: ekg
-Section: net
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Recommends: perl, ${shlibs:Recommends}
@@ -33,11 +32,10 @@ Description: console Gadu Gadu client for UNIX systems - ncurses UI
  Polish (although the commands are in English).
  .
  This package contains the program built with just the (text) ncurses user
- interface. If you want to use the GTK graphical interface, install the ekg-gtk
- package as well.
+ interface. If you want to use the GTK+ graphical interface, install the
+ ekg-gtk package as well.
 
 Package: ekg-gtk
-Section: net
 Architecture: any
 Depends: ekg (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
 Enhances: ekg
