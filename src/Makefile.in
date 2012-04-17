@@ -33,11 +33,11 @@ SRCS = $(patsubst %.o,$(srcdir)/%.c,$(OBJS)) $(srcdir)/comptime.c
 all:	dep ekg @ioctld@
 
 ekg:	$(OBJS) $(srcdir)/comptime.c
-	$(CC) $(CFLAGS) -c -o comptime.o $(srcdir)/comptime.c
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c -o comptime.o $(srcdir)/comptime.c
 	$(CC) $(CFLAGS) -o ekg $(OBJS) comptime.o $(LDFLAGS) $(LIBS)
 
 ioctld:	$(srcdir)/ioctld.c
-	$(CC) $(CFLAGS) $< -o $@ $(LIBS) @IOCTLD_OBJS@
+	$(CC) $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) $< -o $@ $(LIBS) @IOCTLD_OBJS@
 
 dep:	.depend
 
