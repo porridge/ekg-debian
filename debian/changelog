@@ -1,3 +1,16 @@
+ekg (1:1.9~pre+r2854-1) unstable; urgency=low
+
+  * Switched to the 1.9 pre-release upstream branch.
+  * [ab31943] Use build flags from environment. This really Closes: #653531
+  * [9fcfdbf] Bumped debhelper version depenency to match debian/compat.
+  * [838fbaa] Bumped Standards-Version to 3.9.3, no changes needed.
+  * [ce381a2] Include/declare to fix "implicit declaration of function" warnings.
+  * [908a55f] Updated gbp.conf for 1.9 branch.
+  * A couple of patches merged upstream: feature/alternative-build-dirs,
+    feature/ekglogs-glib2
+
+ -- Marcin Owsiany <porridge@debian.org>  Thu, 19 Apr 2012 23:18:16 +0200
+
 ekg (1:1.8~rc2+r2850-3.1) unstable; urgency=low
 
   * Non-maintainer upload with maintainer consent
