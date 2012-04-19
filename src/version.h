@@ -20,6 +20,6 @@
 #ifndef __VERSION_H
 #define __VERSION_H
 
-#define VERSION "SVN"
+#define VERSION "1.9-PRE"
 
 #endif /* __VERSION_H */
