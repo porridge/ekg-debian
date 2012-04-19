@@ -1,8 +1,9 @@
 all: parse
 
+CFLAGS ?= -O2 -s
+
 parse: parse.c
-	gcc -O2 -o parse parse.c  `glib-config --cflags --libs` # -ggdb
-	strip parse
+	gcc $(CPPFLAGS) $(CFLAGS) $(LDFLAGS) -o parse parse.c  `pkg-config --cflags --libs glib-2.0` # -ggdb
 
 clean:
 	rm -f parse

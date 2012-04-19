@@ -131,4 +131,8 @@ void ui_gtk_foreach_window_data(int (*func)(struct window *, void *data), void *
 
 int key_handle_key_press(GtkWidget *wid, GdkEventKey *evt, window_t *sess);
 
+/* ui-maingui.c */
+void mg_changui_new(window_t *sess, int tab, int focus);
+void fe_close_window(window_t *sess);
+
 #endif
