@@ -4,6 +4,10 @@ oznacza, ¿e ,,nick'' jest pomys³odawc± lub podes³a³ patcha, a zrobi³
 to kto¶ oznaczony przez ,,x'' (w - wojtekka, s - speedy, a - arekm,
 d - drg, sz - szalik, del - deletek, g - gophi, p - porridge).
 
+// 2013-03-17
+
+- dodanie -pthread do CFLAGS w docs/libgadu.txt (gophi)
+
 // 2011-06-29
 
 - dodanie fi9o.theme (fi9o/g)

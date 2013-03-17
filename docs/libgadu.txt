@@ -26,11 +26,11 @@ Je¿eli nie zainstalowa³e¶ libgadu systemowo (tylko np. w katalogu
 domowym), to przed wykonaniem ./configure w katalogu ekg musisz 
 podaæ ¶cie¿kê do plików nag³ówkowych oraz biblioteki libgadu:
 
-./configure "CFLAGS=-I ¶cie¿ka_do_include" "LDFLAGS=-L ¶cie¿ka_do_lib"
+./configure "CFLAGS=-I ¶cie¿ka_do_include -pthread" "LDFLAGS=-L ¶cie¿ka_do_lib"
 
 Przyk³adowo:
 
-./configure "CFLAGS=-I $HOME/libgadu/include" "LDFLAGS=-L $HOME/libgadu/lib"
+./configure "CFLAGS=-I $HOME/libgadu/include -pthread" "LDFLAGS=-L $HOME/libgadu/lib"
 
 Ponadto przed uruchomieniem ekg bêdzie potrzebne ustawienie ¶cie¿ki 
 dla loadera:
