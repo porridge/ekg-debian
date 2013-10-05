@@ -1,3 +1,9 @@
+ekg (1:1.9~pre+r2855-1) unstable; urgency=high
+
+  * Add new patch bugfix/link-x11. Closes: #713690
+
+ -- Marcin Owsiany <porridge@debian.org>  Sat, 05 Oct 2013 11:06:55 +0300
+
 ekg (1:1.9~pre+r2854-1) unstable; urgency=low
 
   * Switched to the 1.9 pre-release upstream branch.
