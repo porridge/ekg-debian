@@ -220,7 +220,7 @@ if test "x$enable_ui_gtk" != "xno"; then
 		AC_DEFINE(WITH_UI_GTK, 1, [define if you want ui-gtk])
 		OBJS="$OBJS ui-gtk.o ui-gtk-maingui.o ui-gtk-xtext.o ui-gtk-chanview.o ui-gtk-palette.o ui-gtk-bindings.o"
 
-		LDFLAGS="$LDFLAGS $GTK_LIBS"
+		LDFLAGS="$LDFLAGS $GTK_LIBS -lX11"
 		CFLAGS="$CFLAGS $GTK_CFLAGS"
 	fi
 fi

@@ -1,0 +1,6 @@
+From: Marcin Owsiany <marcin@owsiany.pl>
+Subject: [PATCH] bugfix/link-x11-1.9
+
+Link the gtk UI directly against -lX11 to avoid link failure with newer linkers.
+
+Signed-off-by: Marcin Owsiany <marcin@owsiany.pl>
