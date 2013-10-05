@@ -1,3 +1,4 @@
 bugfix/ekglogs-comment-1.9.diff -p1
 debian/doc-pointers-1.9.diff -p1
 debian/examples-makefile-1.9.diff -p1
+bugfix/link-x11-1.9.diff -p1

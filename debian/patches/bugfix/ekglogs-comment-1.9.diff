@@ -4,8 +4,8 @@ Subject: Changed the comment in the ekglogs vim syntax file to something more ap
 Signed-off-by: Marcin Owsiany <marcin@owsiany.pl>
 
 ---
- contrib/ekg_logs/gglogi.vim |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ contrib/ekg_logs/gglogi.vim | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/contrib/ekg_logs/gglogi.vim b/contrib/ekg_logs/gglogi.vim
 index 591bef4..556735c 100644

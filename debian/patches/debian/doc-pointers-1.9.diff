@@ -4,11 +4,11 @@ Subject: Changed documentation references to better suit Debian installation.
 Signed-off-by: Marcin Owsiany <marcin@owsiany.pl>
 
 ---
- docs/FAQ         |    1 +
- docs/README      |    7 ++++---
- docs/ULOTKA      |    8 +++++++-
- src/themes.c     |    2 +-
- themes/old.theme |    2 +-
+ docs/FAQ         | 1 +
+ docs/README      | 7 ++++---
+ docs/ULOTKA      | 8 +++++++-
+ src/themes.c     | 2 +-
+ themes/old.theme | 2 +-
  5 files changed, 14 insertions(+), 6 deletions(-)
 
 diff --git a/docs/FAQ b/docs/FAQ

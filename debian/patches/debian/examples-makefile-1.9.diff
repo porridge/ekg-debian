@@ -4,8 +4,8 @@ Subject: Use the dynamic library in examples' Makefile.
 Signed-off-by: Marcin Owsiany <marcin@owsiany.pl>
 
 ---
- examples/Makefile.in |    2 +-
- 1 files changed, 1 insertions(+), 1 deletions(-)
+ examples/Makefile.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/examples/Makefile.in b/examples/Makefile.in
 index 93f5154..4afa241 100644

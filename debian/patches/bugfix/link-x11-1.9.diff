@@ -1,0 +1,26 @@
+From: Marcin Owsiany <marcin@owsiany.pl>
+Subject: [PATCH] bugfix/link-x11-1.9
+
+Link the gtk UI directly against -lX11 to avoid link failure with newer linkers.
+
+Signed-off-by: Marcin Owsiany <marcin@owsiany.pl>
+
+---
+ configure.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.in b/configure.in
+index 2d114f0..949764e 100644
+--- a/configure.in
++++ b/configure.in
+@@ -220,7 +220,7 @@ if test "x$enable_ui_gtk" != "xno"; then
+ 		AC_DEFINE(WITH_UI_GTK, 1, [define if you want ui-gtk])
+ 		OBJS="$OBJS ui-gtk.o ui-gtk-maingui.o ui-gtk-xtext.o ui-gtk-chanview.o ui-gtk-palette.o ui-gtk-bindings.o"
+ 
+-		LDFLAGS="$LDFLAGS $GTK_LIBS"
++		LDFLAGS="$LDFLAGS $GTK_LIBS -lX11"
+ 		CFLAGS="$CFLAGS $GTK_CFLAGS"
+ 	fi
+ fi
+-- 
+tg: (4daef53..) bugfix/link-x11-1.9 (depends on: 1.9)
