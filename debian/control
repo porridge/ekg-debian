@@ -1,7 +1,7 @@
 Source: ekg
 Section: net
 Priority: optional
-Maintainer: Marcin Owsiany <porridge@debian.org>
+Maintainer: Debian QA Group <packages@qa.debian.org>
 Build-Depends: debhelper (>= 9), dh-autoreconf, libgadu-dev (>= 1:1.8.0), libncurses-dev, zlib1g-dev, python-dev, libgsm1-dev (>= 1.0.10-11.1), libssl-dev, libglib2.0-dev, libaspell-dev, libgtk2.0-dev
 Standards-Version: 3.9.3
 Homepage: http://ekg.chmurka.net/
